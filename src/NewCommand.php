@@ -104,18 +104,9 @@ class NewCommand extends Command
      * @param  string  $version
      * @return $this
      */
-    protected function download($zipFile, $version = 'master')
+    protected function download($zipFile, $version = 'v0.1')
     {
-        switch ($version) {
-            case 'master':
-                $filename = 'latest.zip';
-                break;
-            case 'develop':
-                $filename = 'latest-develop.zip';
-                break;
-        }
-
-        $response = (new Client)->get('https://pails.xueron.com/'.$filename);
+        $response = (new Client)->get('https://github.com/xueron/pails-seed/archive/'.$version.'.zip');
 
         file_put_contents($zipFile, $response->getBody());
 
@@ -169,7 +160,7 @@ class NewCommand extends Command
             return 'develop';
         }
 
-        return 'master';
+        return 'v0.1';
     }
 
     /**
