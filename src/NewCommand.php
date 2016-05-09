@@ -156,11 +156,12 @@ class NewCommand extends Command
      */
     protected function getVersion($input)
     {
+        return 'v0.1';
+
         if ($input->getOption('dev')) {
             return 'develop';
         }
 
-        return 'v0.1';
     }
 
     /**
